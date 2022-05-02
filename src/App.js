@@ -5,26 +5,18 @@ import React, { useEffect } from "react";
 // import { getUser } from "./api/fetchData";
 import Repos from "./components/Repos";
 import Header from "./components/Header";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, Flex } from "@chakra-ui/react";
+import Profile from "./components/Profile";
 function App() {
-  // const handleOnClick =async(provider)=>{
-  //   // console.log("clicked")
-  //   const res= await  githubAuth(provider)
-  //   console.log(res)
-  //   // c
-  // useEffect(() => {
-  //   getUser();
-  //   console.log("hi");
-  // }, []);
-  // const onSuccess = (response) => console.log(response);
-  // const onFailure = (response) => console.error(response);
-  // console.log("clicked");
-  // }
+
   return (
     <ChakraProvider>
       <div className="App">
         <Header />
-        <Repos />
+        <Flex maxWidth="1324px" margin="0 auto">
+          <Profile />
+          <Repos />
+        </Flex>
         {/* <OAuth2Login
        authorizationUrl="https://github.com/login/oauth/authorize"
        responseType="token"

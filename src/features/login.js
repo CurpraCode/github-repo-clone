@@ -23,7 +23,7 @@ export const loginSlice = createSlice({
     },
   },
 });
-
 export const { loginPending, loginSuccess, loginError } = loginSlice.actions;
+
 
 export default loginSlice.reducer;

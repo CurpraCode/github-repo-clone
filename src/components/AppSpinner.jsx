@@ -12,7 +12,7 @@ const AppSpinner = () => {
                 width: "100%",
                 height: "100%",
                 position: "absolute",
-                top: "40",
+                top: "30",
                 zIndex: "1",
                 // backgroundColor: `${colors.WHITE}`,
                 opacity: "1",

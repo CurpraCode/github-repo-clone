@@ -5,7 +5,7 @@ import { loginPending, loginSuccess, loginError } from "../features/login";
 import { getUser } from "../api/fetchData";
 import AppSpinner from "./AppSpinner";
 import { BiCaretDown, BiStar } from "react-icons/bi";
-
+import moment from "moment";
 
 const Repos = () => {
   const dispatch = useDispatch();
@@ -43,7 +43,7 @@ const Repos = () => {
     );
   });
   return (
-    <Box>
+    <Box flex="2">
       <Box padding="0.9rem 0.3rem" borderBottom="1px solid gray">
         <Flex alignItems="center">
           <Input
@@ -51,18 +51,28 @@ const Repos = () => {
             placeholder="Find a repository..."
             value={filter}
             onChange={searchText.bind(this)}
+            border="1px solid gray"
+            padding="0.1rem 0.5rem"
+            mr="1rem"
+            size="md"
+            _focus={{
+              outline: 0,
+            }}
           />
           <Flex>
-            <Button
+            <Flex
+              bg="gray.100"
+              alignItems="center"
+              borderRadius="0.3rem"
+              padding=" 0.1rem 0.9rem"
               border="1px solid gray"
-              _focus={{
-                outline: 0,
-              }}
+              mr="0.5rem"
             >
               Type <BiCaretDown />
-            </Button>
+            </Flex>
             <Button
               border="1px solid gray"
+              mr="0.5rem"
               _focus={{
                 outline: 0,
               }}
@@ -70,7 +80,9 @@ const Repos = () => {
               Language <BiCaretDown />
             </Button>
             <Button
+            sm="sm"
               border="1px solid gray"
+              mr="0.5rem"
               _focus={{
                 outline: 0,
               }}
@@ -94,16 +106,31 @@ const Repos = () => {
                 justifyContent="space-between"
               >
                 <Box>
-                  <Flex>
+                  <Flex alignItems="center">
                     <a href={users.html_url}>
-                      <Text color="blue">{users.name}</Text>
+                      <Text color="#58a6ff" fontSize="1.3rem" fontWeight="bold">
+                        {users.name}
+                      </Text>
                     </a>
-                    <Text as="span" ml="1rem">
+                    <Text
+                      as="span"
+                      ml="1rem"
+                      fontSize="0.6rem"
+                      fontWeight="bold"
+                      padding="0.1rem 0.5rem"
+                      borderRadius="1rem"
+                      border="1px solid gray"
+                    >
                       {users.visibility}
                     </Text>
                   </Flex>
-                  <Text>{users.description || ""}</Text>
-                  <Flex padding="0.9rem 0.1rem" justifyContent="space-between">
+                  <Text  fontWeight="bold">{users.description || ""}</Text>
+                  <Flex
+                    padding="0.9rem 0.1rem"
+                    justifyContent="space-between"
+                    fontSize="0.7rem"
+                    fontWeight="bold"
+                  >
                     <Text>{users.language || null}</Text>
                     {users.stargazers_count > 0 ? (
                       <Flex alignItems="center">
@@ -113,18 +140,33 @@ const Repos = () => {
                     ) : (
                       ""
                     )}
-                    <Text>Updated {users.updated_at}</Text>
+                    <Text>
+                      Updated {moment(users.updated_at).format("DD MMM, YYYY")}
+                    </Text>
                   </Flex>
                 </Box>
-
-                <Button
-                  border="1px solid gray"
-                  _focus={{
-                    outline: 0,
-                  }}
-                >
-                  <BiStar /> STAR <BiCaretDown />
-                </Button>
+                <Flex borderLeftRadius="0.5rem" fontSize="0.9rem">
+                  <Flex
+                    bg="gray.100"
+                    alignItems="center"
+                    borderLeftRadius="0.3rem"
+                    borderRight="1px solid gray"
+                    padding="0.1rem 0.6rem"
+                    border="1px solid gray"
+                  >
+                    <BiStar />
+                    <Text ml="0.5rem"> Star</Text>
+                  </Flex>
+                  <Flex
+                    bg="gray.100"
+                    borderRightRadius="0.3rem"
+                    alignItems="center"
+                    padding=" 0.1rem 0.6rem"
+                    border="1px solid gray"
+                  >
+                    <BiCaretDown />
+                  </Flex>
+                </Flex>
               </Flex>
             );
           })}
