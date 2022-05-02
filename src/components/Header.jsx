@@ -9,6 +9,7 @@ const Header = () => {
   return (
     <Box padding="3rem 0rem"  >
       <Flex
+      // flex="2"
         alignItems="center"
         justifyContent="space-evenly"
         // maxWidth="900px"
