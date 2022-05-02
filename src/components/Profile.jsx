@@ -23,6 +23,7 @@ const Profile = () => {
         dispatch(userDetailsError(err));
         console.log(err);
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <Box mr="5rem" flex="1">
